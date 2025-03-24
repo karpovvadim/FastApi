@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>METANIT.COM</title>
+    <meta charset="utf-8" />
+</head>
+<body>
+    <div id="message"></div>
+    <button onclick="send()">Отправить</button>
+<script>
+    async function send(){
+
+        // отправляем запрос
+        const response = await fetch("/hello", {
+                method: "POST",
+                headers: { "Accept": "application/json", "Content-Type": "application/json" },
+                body: JSON.stringify({ 
+                    name: "Tom",
+                    languages: ["Python", "JavaScript"]
+                })
+        });
+        if (response.ok) {
+               const data = await response.json();
+               document.getElementById("message").textContent = data.message;
+        }
+        else
+               console.log(data);      // {message: "Name: Tom. Languages: ['Python', 'JavaScript']"
+    }
+</script>
+</body>
+</html>
