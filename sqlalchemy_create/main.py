@@ -18,8 +18,8 @@ print(engine)
 # engine = create_engine(SQLALCHEMY_DATABASE_URL)
 
 # создаем базовый класс для моделей
-Base = declarative_base()
-# class Base(DeclarativeBase): pass
+class Base(DeclarativeBase): pass
+# Base = declarative_base()
 
 
 # создаем модель, объекты которой будут храниться в бд
@@ -28,7 +28,7 @@ class Person(Base):
 
     id = Column(Integer, primary_key=True, index=True)
     name = Column(String)
-    age = Column(Integer, )
+    age = Column(Integer)
 
     print("2 -", __tablename__)
 
